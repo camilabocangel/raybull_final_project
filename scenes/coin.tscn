@@ -1,5 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://ryk4viggblgg"]
+[gd_scene load_steps=17 format=3 uid="uid://ryk4viggblgg"]
 
+[ext_resource type="Script" uid="uid://1a3hy0nq3u7g" path="res://scripts/coin.gd" id="1_i64fm"]
 [ext_resource type="Texture2D" uid="uid://cj26131e1j88m" path="res://assets/sprites/coin.png" id="1_rwqht"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i64fm"]
@@ -98,6 +99,8 @@ animations = [{
 radius = 5.0
 
 [node name="Coin" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_i64fm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ls27i")
@@ -107,3 +110,5 @@ frame_progress = 0.550346
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ssuvv")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
