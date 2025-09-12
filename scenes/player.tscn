@@ -40,7 +40,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fjrip"]
-radius = 8.0
+radius = 6.0
 height = 22.0
 
 [node name="Player" type="CharacterBody2D"]
@@ -51,7 +51,7 @@ position = Vector2(0, -18)
 sprite_frames = SubResource("SpriteFrames_tuyoq")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.512317
+frame_progress = 0.130406
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -13)
