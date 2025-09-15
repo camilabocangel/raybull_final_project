@@ -1,20 +1,22 @@
-[gd_scene load_steps=25 format=3 uid="uid://q26tgcmm2clv"]
+[gd_scene load_steps=27 format=3 uid="uid://q26tgcmm2clv"]
 
-[ext_resource type="PackedScene" uid="uid://coyi5e3kbvrbc" path="res://scenes/player.tscn" id="1_80nbo"]
-[ext_resource type="Texture2D" uid="uid://dxvyaawnyvcc5" path="res://assets/tiles/Mountain_Falls_Files/Mountain_Falls_trees_flora.png" id="2_7jktm"]
-[ext_resource type="Texture2D" uid="uid://cttavphymk7ct" path="res://assets/tiles/Mountain_Falls_Files/Mountain_Falls_main_layer_LUSH.png" id="2_e2o6t"]
-[ext_resource type="PackedScene" uid="uid://ryk4viggblgg" path="res://scenes/coin.tscn" id="3_feb5d"]
-[ext_resource type="Texture2D" uid="uid://4syag3rcrgjt" path="res://assets/tiles/Mountain_Falls_Files/Backgrounds LUSH/Mountain_Falls_distant_lands_3.png" id="3_iotsf"]
-[ext_resource type="Texture2D" uid="uid://bqln4sg40tqc7" path="res://assets/tiles/Mountain_Falls_Files/Backgrounds LUSH/Mountain_Falls_Background_LUSH.png" id="3_ryrav"]
-[ext_resource type="PackedScene" uid="uid://pb1m2jul5ssu" path="res://scenes/killzone.tscn" id="4_fc0e3"]
-[ext_resource type="Texture2D" uid="uid://dhgdhudbq78rm" path="res://assets/tiles/Mountain_Falls_Files/Backgrounds LUSH/Mountain_Falls_distant_lands_1_WITH_FOG_LUSH.png" id="4_j5wjh"]
-[ext_resource type="Texture2D" uid="uid://dllvl7umeav28" path="res://assets/tiles/Mountain_Falls_Files/Backgrounds LUSH/Mountain_Falls_distant_lands_2_LUSH.png" id="5_vef74"]
-[ext_resource type="Texture2D" uid="uid://bfy5gdaf8grl2" path="res://assets/tiles/Mountain_Falls_Files/Mountain_Falls_mid_layer.png" id="6_hve3p"]
-[ext_resource type="Texture2D" uid="uid://dks84jfo5uvjh" path="res://assets/tiles/Mountain_Falls_Files/Animated Tiles/Mountain_Falls_water no bubbles.png" id="6_mfdv2"]
-[ext_resource type="PackedScene" uid="uid://cyd2vi2qhtxbu" path="res://scenes/pinky.tscn" id="9_vef74"]
+[ext_resource type="Texture2D" uid="uid://cttavphymk7ct" path="res://assets/tiles/Mountain_Falls_Files/Mountain_Falls_main_layer_LUSH.png" id="1_dinhu"]
+[ext_resource type="Script" uid="uid://cm7bqttirphoa" path="res://scripts/game_manager.gd" id="1_kvuet"]
+[ext_resource type="Texture2D" uid="uid://dxvyaawnyvcc5" path="res://assets/tiles/Mountain_Falls_Files/Mountain_Falls_trees_flora.png" id="2_kvuet"]
+[ext_resource type="FontFile" uid="uid://dfnsphvw8qxps" path="res://assets/Font/PixelOperator8-Bold.ttf" id="2_trtic"]
+[ext_resource type="Texture2D" uid="uid://4syag3rcrgjt" path="res://assets/tiles/Mountain_Falls_Files/Backgrounds LUSH/Mountain_Falls_distant_lands_3.png" id="3_trtic"]
+[ext_resource type="Texture2D" uid="uid://bqln4sg40tqc7" path="res://assets/tiles/Mountain_Falls_Files/Backgrounds LUSH/Mountain_Falls_Background_LUSH.png" id="4_ir15t"]
+[ext_resource type="Texture2D" uid="uid://dhgdhudbq78rm" path="res://assets/tiles/Mountain_Falls_Files/Backgrounds LUSH/Mountain_Falls_distant_lands_1_WITH_FOG_LUSH.png" id="5_ca42v"]
+[ext_resource type="Texture2D" uid="uid://dllvl7umeav28" path="res://assets/tiles/Mountain_Falls_Files/Backgrounds LUSH/Mountain_Falls_distant_lands_2_LUSH.png" id="6_rysoc"]
+[ext_resource type="Texture2D" uid="uid://dks84jfo5uvjh" path="res://assets/tiles/Mountain_Falls_Files/Animated Tiles/Mountain_Falls_water no bubbles.png" id="7_ssvqc"]
+[ext_resource type="Texture2D" uid="uid://bfy5gdaf8grl2" path="res://assets/tiles/Mountain_Falls_Files/Mountain_Falls_mid_layer.png" id="8_264po"]
+[ext_resource type="PackedScene" uid="uid://coyi5e3kbvrbc" path="res://scenes/player.tscn" id="9_1kice"]
+[ext_resource type="PackedScene" uid="uid://pb1m2jul5ssu" path="res://scenes/killzone.tscn" id="10_5newe"]
+[ext_resource type="PackedScene" uid="uid://ryk4viggblgg" path="res://scenes/coin.tscn" id="11_37s47"]
+[ext_resource type="PackedScene" uid="uid://cyd2vi2qhtxbu" path="res://scenes/pinky.tscn" id="12_bt5mj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_feb5d"]
-texture = ExtResource("2_e2o6t")
+texture = ExtResource("1_dinhu")
 1:0/0 = 0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:0/0 = 0
@@ -140,7 +142,7 @@ texture = ExtResource("2_e2o6t")
 6:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ryrav"]
-texture = ExtResource("2_7jktm")
+texture = ExtResource("2_kvuet")
 4:8/0 = 0
 7:8/0 = 0
 4:9/0 = 0
@@ -166,27 +168,27 @@ texture = ExtResource("2_7jktm")
 5:4/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7sc4i"]
-texture = ExtResource("3_iotsf")
+texture = ExtResource("3_trtic")
 0:1/size_in_atlas = Vector2i(20, 8)
 0:1/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eow3j"]
-texture = ExtResource("3_ryrav")
+texture = ExtResource("4_ir15t")
 0:0/size_in_atlas = Vector2i(20, 13)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hve3p"]
-texture = ExtResource("4_j5wjh")
+texture = ExtResource("5_ca42v")
 0:0/size_in_atlas = Vector2i(20, 7)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mfdv2"]
-texture = ExtResource("5_vef74")
+texture = ExtResource("6_rysoc")
 0:0/size_in_atlas = Vector2i(20, 4)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iotsf"]
-texture = ExtResource("5_vef74")
+texture = ExtResource("6_rysoc")
 1:0/0 = 0
 2:0/0 = 0
 5:0/0 = 0
@@ -255,14 +257,14 @@ texture = ExtResource("5_vef74")
 19:3/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_215e1"]
-texture = ExtResource("6_mfdv2")
+texture = ExtResource("7_ssvqc")
 4:0/0 = 0
 0:0/size_in_atlas = Vector2i(3, 1)
 0:0/0 = 0
 3:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vef74"]
-texture = ExtResource("3_ryrav")
+texture = ExtResource("4_ir15t")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -494,7 +496,7 @@ texture = ExtResource("3_ryrav")
 10:4/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lc2xo"]
-texture = ExtResource("6_hve3p")
+texture = ExtResource("8_264po")
 1:0/0 = 0
 2:0/0 = 0
 3:0/0 = 0
@@ -589,6 +591,20 @@ sources/15 = SubResource("TileSetAtlasSource_7sc4i")
 
 [node name="Game" type="Node2D"]
 
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_kvuet")
+
+[node name="ScoreLabel" type="Label" parent="GameManager"]
+offset_left = -166.0
+offset_top = 1.0
+offset_right = -50.0
+offset_bottom = 20.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_trtic")
+text = "Score: x"
+autowrap_mode = 2
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_fc0e3")
 format = 2
@@ -605,7 +621,7 @@ layer_4/tile_data = PackedInt32Array(524277, 327680, 7, 524278, 327680, 7, 52427
 layer_5/name = "Mid2"
 layer_5/tile_data = PackedInt32Array(458742, 262145, 8, 458746, 262145, 10, 196608, 262145, 8, 458749, 196617, 1, 524285, 196617, 1, 524284, 327689, 2, 589821, 196617, 1, 655357, 131081, 7, 655358, 131081, 7, 589822, 6, 0, 524290, 196614, 0, 524291, 196614, 0, 655359, 131081, 7, 589826, 131081, 7, 589827, 131081, 7, 196609, 262145, 4, 327688, 458753, 4, 31, 262145, 8, 32, 262145, 8, 33, 262145, 8, 30, 262145, 8, 262185, 262145, 8, 131107, 262145, 8, 65602, 458753, 4, 65597, 262145, 4)
 
-[node name="Player" parent="." instance=ExtResource("1_80nbo")]
+[node name="Player" parent="." instance=ExtResource("9_1kice")]
 z_index = 5
 position = Vector2(-158, 106)
 
@@ -616,7 +632,7 @@ limit_bottom = 170
 limit_smoothed = true
 position_smoothing_enabled = true
 
-[node name="Killzone" parent="." instance=ExtResource("4_fc0e3")]
+[node name="Killzone" parent="." instance=ExtResource("10_5newe")]
 position = Vector2(-105, 181)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
@@ -624,11 +640,13 @@ shape = SubResource("WorldBoundaryShape2D_7jktm")
 
 [node name="Coins" type="Node" parent="."]
 
-[node name="Coin" parent="Coins" instance=ExtResource("3_feb5d")]
+[node name="Coin" parent="Coins" instance=ExtResource("11_37s47")]
 position = Vector2(93, 37)
 
-[node name="Coin2" parent="Coins" instance=ExtResource("3_feb5d")]
+[node name="Coin2" parent="Coins" instance=ExtResource("11_37s47")]
 position = Vector2(-2, 54)
 
-[node name="Pinky" parent="." instance=ExtResource("9_vef74")]
-position = Vector2(267, 119)
+[node name="Pinky" parent="." instance=ExtResource("12_bt5mj")]
+position = Vector2(267, 120)
+
+[node name="Labels" type="Node" parent="."]
