@@ -8,7 +8,7 @@ var is_attacking = false
 signal death
 
 var jumps = 2
-@export var hp = GlobalVariables
+@export var hp = GlobalVariables.player_hp
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox: Area2D = $HitBox
 @onready var hurtbox: Area2D = $HurtBox
