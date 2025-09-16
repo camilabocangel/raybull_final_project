@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://cnwducyhh4s4p" path="res://assets/Player/adventurer-Sheet.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://dxq8015am3ht5" path="res://scripts/player.gd" id="1_g2els"]
-[ext_resource type="PackedScene" uid="uid://cp2mci4qo767g" path="res://scenes/hit_box.tscn" id="3_dqkch"]
 [ext_resource type="PackedScene" uid="uid://b83buy4rek060" path="res://scenes/hurt_box.tscn" id="4_qlg0r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i4ail"]
@@ -419,6 +418,10 @@ animations = [{
 radius = 6.0
 height = 22.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2els"]
+radius = 9.0
+height = 26.0
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_g2els")
@@ -426,7 +429,7 @@ script = ExtResource("1_g2els")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -18)
 sprite_frames = SubResource("SpriteFrames_tuyoq")
-animation = &"attack3"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -437,21 +440,34 @@ shape = SubResource("CapsuleShape2D_fjrip")
 wait_time = 0.75
 one_shot = true
 
-[node name="HitBox" parent="." instance=ExtResource("3_dqkch")]
-position = Vector2(16, -13)
-scale = Vector2(2, 2)
-collision_layer = 8
+[node name="Marker2D" type="Marker2D" parent="."]
 
-[node name="HitBox2" parent="." instance=ExtResource("3_dqkch")]
-position = Vector2(13, -29)
-scale = Vector2(2, 2)
+[node name="HitBox" type="Area2D" parent="Marker2D"]
 collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShapeRight" type="CollisionShape2D" parent="Marker2D/HitBox"]
+position = Vector2(16, -16)
+shape = SubResource("CapsuleShape2D_g2els")
+disabled = true
+debug_color = Color(0, 0.647288, 0.216855, 0.42)
+
+[node name="CollisionShapeLeft" type="CollisionShape2D" parent="Marker2D/HitBox"]
+position = Vector2(-16, -16)
+shape = SubResource("CapsuleShape2D_g2els")
+disabled = true
+debug_color = Color(0, 0.647059, 0.215686, 0.419608)
 
 [node name="HurtBox" parent="." instance=ExtResource("4_qlg0r")]
-position = Vector2(0, -11)
+position = Vector2(0, -12)
+collision_layer = 18
+collision_mask = 32
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
 scale = Vector2(1.6, 3)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="timeout" from="SlideTimer" to="." method="_on_slide_timer_timeout"]
-[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
+
+[editable path="HurtBox"]

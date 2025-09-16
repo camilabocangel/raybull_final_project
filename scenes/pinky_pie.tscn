@@ -1,12 +1,12 @@
-[gd_scene load_steps=42 format=3 uid="uid://bih3swuvb041h"]
+[gd_scene load_steps=43 format=3 uid="uid://bih3swuvb041h"]
 
 [ext_resource type="Texture2D" uid="uid://enoot518fi0x" path="res://assets/1 Pink_Monster/Pink_Monster_Walk_6.png" id="1_tp6od"]
 [ext_resource type="Script" uid="uid://dk54diw2hjisw" path="res://scripts/pinky_pie.gd" id="1_yjuhi"]
 [ext_resource type="Texture2D" uid="uid://cff47b15kmdpi" path="res://assets/1 Pink_Monster/Pink_Monster_Attack2_6.png" id="2_ya2qf"]
-[ext_resource type="PackedScene" uid="uid://cp2mci4qo767g" path="res://scenes/hit_box.tscn" id="3_1j6gf"]
 [ext_resource type="Texture2D" uid="uid://spy85ujufgji" path="res://assets/1 Pink_Monster/Pink_Monster_Death_8.png" id="3_wfw7i"]
 [ext_resource type="Texture2D" uid="uid://bh7xbjmbq8e6t" path="res://assets/1 Pink_Monster/Pink_Monster_Hurt_4.png" id="4_ljjl1"]
 [ext_resource type="Texture2D" uid="uid://b4nf25sbief06" path="res://assets/1 Pink_Monster/Pink_Monster_Run_6.png" id="5_g5kgq"]
+[ext_resource type="AudioStream" uid="uid://dipbncbwdwf50" path="res://assets/sounds/3pops/pop1.ogg" id="8_ljjl1"]
 [ext_resource type="PackedScene" uid="uid://b83buy4rek060" path="res://scenes/hurt_box.tscn" id="8_wfw7i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k0vat"]
@@ -252,16 +252,20 @@ radius = 3.0
 height = 10.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wfw7i"]
-radius = 6.99998
+radius = 16.0008
 height = 144.004
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ya2qf"]
+radius = 4.0
+
 [node name="PinkyPie" type="CharacterBody2D"]
+collision_layer = 4
 script = ExtResource("1_yjuhi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_wfw7i")
-animation = &"death"
+animation = &"run"
 autoplay = "walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -282,25 +286,44 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(0, -8)
 rotation = -1.57041
 shape = SubResource("CapsuleShape2D_wfw7i")
 debug_color = Color(0.682096, 0.811683, 0.791484, 0.42)
-
-[node name="HitBox" parent="." instance=ExtResource("3_1j6gf")]
-position = Vector2(6, 3)
-collision_layer = 32
 
 [node name="HurtBox" parent="." instance=ExtResource("8_wfw7i")]
 position = Vector2(0, 2)
 collision_layer = 64
 collision_mask = 8
 
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(-1, -1)
+scale = Vector2(1, 1.6)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="HitBox" type="Area2D" parent="Marker2D"]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShapeRight" type="CollisionShape2D" parent="Marker2D/HitBox"]
+position = Vector2(8, 2)
+shape = SubResource("CircleShape2D_ya2qf")
+debug_color = Color(0, 0.647059, 0.215686, 0.419608)
+
+[node name="CollisionShapeLeft" type="CollisionShape2D" parent="Marker2D/HitBox"]
+position = Vector2(-10, 2)
+shape = SubResource("CircleShape2D_ya2qf")
+debug_color = Color(0, 0.647059, 0.215686, 0.419608)
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_ljjl1")
+volume_db = 5.115
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="area_entered" from="DetectionArea" to="." method="_on_detection_area_area_entered"]
 [connection signal="area_exited" from="DetectionArea" to="." method="_on_detection_area_area_exited"]
-[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
 
-[editable path="HitBox"]
 [editable path="HurtBox"]

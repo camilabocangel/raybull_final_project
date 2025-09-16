@@ -10,6 +10,9 @@ var is_attacking = false
 @onready var hitbox: Area2D = $HitBox
 @onready var hurtbox: Area2D = $HurtBox
 @onready var slide_timer: Timer = $SlideTimer
+@onready var collision_shape_right: CollisionShape2D = $Marker2D/HitBox/CollisionShapeRight
+@onready var collision_shape_left: CollisionShape2D = $Marker2D/HitBox/CollisionShapeLeft
+
 
  	
 
@@ -24,8 +27,6 @@ func _physics_process(delta: float) -> void:
 		if not slide_timer.is_stopped():
 			slide_timer.stop()
 		velocity.y = JUMP_VELOCITY
-	
-
 	
 	var direction := Input.get_axis("move_left", "move_right")
 	
@@ -70,35 +71,33 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_pressed("attack1"):
 			is_attacking = true
 			animated_sprite.play("attack1")
+			if not animated_sprite.flip_h:
+				collision_shape_right.disabled = false
+			else:
+				collision_shape_left.disabled = false
 		elif Input.is_action_pressed("attack2"):
 			is_attacking = true
 			animated_sprite.play("attack2")
+			if not animated_sprite.flip_h:
+				collision_shape_right.disabled = false
+			else:
+				collision_shape_left.disabled = false
 		elif Input.is_action_pressed("attack3"):
 			is_attacking = true
 			animated_sprite.play("attack3")
+			if not animated_sprite.flip_h:
+				collision_shape_right.disabled = false
+			else:
+				collision_shape_left.disabled = false
 
 func _on_SlideTimer_timeout() -> void:
 	pass
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite.animation == "attack1" or animated_sprite.animation == "attack2" or animated_sprite.animation == "attack3":
+		collision_shape_right.disabled = true
+		collision_shape_left.disabled = true
 		is_attacking = false
-
-
-func _on_animated_sprite_2d_sprite_frames_changed() -> void:
-	if animated_sprite.animation == "attack1" or animated_sprite.animation == "attack3":
-		match animated_sprite.frame:
-			2:
-				hitbox.disabled = false    
-			_:
-				hitbox.disabled = true
-	elif animated_sprite.animation == "attack2":
-		match animated_sprite.frame:
-			3:
-				hitbox.disabled = false
-			_:
-				hitbox.disabled = true
-
 
 
 func _on_hurt_box_area_entered(area: Area2D) -> void:
