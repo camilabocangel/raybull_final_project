@@ -5,8 +5,13 @@ const SPEED = 130.0
 const JUMP_VELOCITY = -300.0
 var SLIDE_SPEED = 250.0
 var is_attacking = false
+@export var hp = 100
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var hitbox: Area2D = $HitBox
+@onready var hurtbox: Area2D = $HurtBox
 @onready var slide_timer: Timer = $SlideTimer
+
+ 	
 
 
 func _physics_process(delta: float) -> void:
@@ -75,8 +80,31 @@ func _physics_process(delta: float) -> void:
 func _on_SlideTimer_timeout() -> void:
 	pass
 
-
-
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite.animation == "attack1" or animated_sprite.animation == "attack2" or animated_sprite.animation == "attack3":
 		is_attacking = false
+
+
+func _on_animated_sprite_2d_sprite_frames_changed() -> void:
+	if animated_sprite.animation == "attack1" or animated_sprite.animation == "attack3":
+		match animated_sprite.frame:
+			2:
+				hitbox.disabled = false    
+			_:
+				hitbox.disabled = true
+	elif animated_sprite.animation == "attack2":
+		match animated_sprite.frame:
+			3:
+				hitbox.disabled = false
+			_:
+				hitbox.disabled = true
+
+
+
+func _on_hurt_box_area_entered(area: Area2D) -> void:
+	hp -= 10
+	print("OUCH (Player)")
+
+
+
+	
