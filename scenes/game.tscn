@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://coyi5e3kbvrbc" path="res://scenes/player.tscn" id="9_1kice"]
 [ext_resource type="PackedScene" uid="uid://pb1m2jul5ssu" path="res://scenes/killzone.tscn" id="10_5newe"]
 [ext_resource type="PackedScene" uid="uid://ryk4viggblgg" path="res://scenes/coin.tscn" id="11_37s47"]
-[ext_resource type="PackedScene" uid="uid://bih3swuvb041h" path="res://scenes/pinky_pie.tscn" id="14_1kice"]
+[ext_resource type="PackedScene" path="res://scenes/pinky_pie.tscn" id="14_1kice"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_feb5d"]
 texture = ExtResource("1_dinhu")
