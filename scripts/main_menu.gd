@@ -5,6 +5,8 @@ extends Node2D
 func _on_texture_button_pressed() -> void:
 	GlobalVariables.player_hp = 100
 	GlobalVariables.score = 0
+	GlobalVariables.player_alive = true
+
 	get_tree().change_scene_to_file("res://scenes/game.tscn")
 
 func _on_texture_button_mouse_entered() -> void:

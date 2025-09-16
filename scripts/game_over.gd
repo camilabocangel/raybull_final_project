@@ -21,6 +21,8 @@ func _on_menu_button_mouse_exited() -> void:
 func _on_replay_button_pressed() -> void:
 	GlobalVariables.player_hp = 100
 	GlobalVariables.score = 0
+	GlobalVariables.player_alive = true
+
 	get_tree().change_scene_to_file("res://scenes/game.tscn")
 
 func _on_replay_button_mouse_entered() -> void:

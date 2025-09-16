@@ -38,10 +38,10 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="Replay_Button" type="TextureButton" parent="."]
-offset_left = -62.0
-offset_top = 129.0
-offset_right = 578.0
-offset_bottom = 769.0
+offset_left = -128.0
+offset_top = 38.0
+offset_right = 512.0
+offset_bottom = 678.0
 scale = Vector2(0.8, 0.8)
 pivot_offset = Vector2(319, 319)
 texture_normal = ExtResource("10_u27yo")
@@ -55,19 +55,19 @@ text = "GAME OVER"
 label_settings = SubResource("LabelSettings_tei00")
 
 [node name="Menu_Button" type="TextureButton" parent="."]
-offset_left = 579.0
-offset_top = 125.0
-offset_right = 1219.0
-offset_bottom = 765.0
+offset_left = 655.0
+offset_top = 37.0
+offset_right = 1295.0
+offset_bottom = 677.0
 scale = Vector2(0.8, 0.8)
 pivot_offset = Vector2(319, 319)
 texture_normal = ExtResource("12_o57t2")
 
 [node name="Score" type="Label" parent="."]
-offset_left = 250.0
-offset_top = 601.0
-offset_right = 954.0
-offset_bottom = 729.0
+offset_left = 232.0
+offset_top = 541.0
+offset_right = 936.0
+offset_bottom = 669.0
 text = "Score: "
 label_settings = SubResource("LabelSettings_2jtsn")
 

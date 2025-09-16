@@ -5,4 +5,5 @@ extends Node
 
 func add_point():
 	score += 1
+	GlobalVariables.score = score
 	score_label.text = "Score: " + str(score)
