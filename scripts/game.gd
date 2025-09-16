@@ -9,6 +9,7 @@ func _process(delta: float) -> void:
 	
 func _on_player_fell():
 	player.reduce_hp(10)
+	GlobalVariables.player_hp = player.hp
 	
 func _on_game_over():
 	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
