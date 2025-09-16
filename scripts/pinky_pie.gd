@@ -8,6 +8,8 @@ var direction = 1
 @export var target = Vector2.ZERO
 var player_detected = false
 
+signal deathSignal
+
 @onready var ray_cast_right: RayCast2D = $RayCastRight
 @onready var ray_cast_left: RayCast2D = $RayCastLeft
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -73,6 +75,7 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 	if hp <= 0 and animated_sprite.animation != "death":
 		animated_sprite.play("death")
 		death_sound.play()
+		deathSignal.emit()
 
 func _on_detection_area_area_entered(area: Area2D) -> void:
 	player_detected = true 
