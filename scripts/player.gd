@@ -5,6 +5,9 @@ const SPEED = 130.0
 const JUMP_VELOCITY = -300.0
 var SLIDE_SPEED = 250.0
 var is_attacking = false
+
+signal death
+
 @export var hp = 100
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox: Area2D = $HitBox
@@ -12,10 +15,6 @@ var is_attacking = false
 @onready var slide_timer: Timer = $SlideTimer
 @onready var collision_shape_right: CollisionShape2D = $Marker2D/HitBox/CollisionShapeRight
 @onready var collision_shape_left: CollisionShape2D = $Marker2D/HitBox/CollisionShapeLeft
-
-
- 	
-
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -103,7 +102,8 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 func _on_hurt_box_area_entered(area: Area2D) -> void:
 	hp -= 10
 	print("OUCH (Player)")
-
+	if hp <= 0:
+		death.emit()
 
 
 	
