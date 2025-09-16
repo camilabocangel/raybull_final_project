@@ -5,6 +5,7 @@ const SPEED = 130.0
 const JUMP_VELOCITY = -300.0
 var SLIDE_SPEED = 250.0
 var is_attacking = false
+var jumps = 2
 @export var hp = 100
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox: Area2D = $HitBox
@@ -23,10 +24,14 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor() and not is_attacking:
+	if Input.is_action_just_pressed("jump") and not is_attacking and jumps > 1:
+		jumps -= 1
 		if not slide_timer.is_stopped():
 			slide_timer.stop()
 		velocity.y = JUMP_VELOCITY
+		
+	if is_on_floor():
+			jumps = 2
 	
 	var direction := Input.get_axis("move_left", "move_right")
 	
@@ -45,14 +50,19 @@ func _physics_process(delta: float) -> void:
 				animated_sprite.play("slide")
 			else:
 				if direction == 0:
-					if Input.is_action_pressed("crouch") and not is_attacking:
+					if Input.is_action_pressed("crouch"):
 						animated_sprite.play("crouch")
 					else:
 						animated_sprite.play("idle")
 				else:
 					animated_sprite.play("run")
 		else:
-			animated_sprite.play("jump")
+			if jumps == 0:
+				animated_sprite.play("fall")
+			elif jumps == 1:
+				animated_sprite.play("jump2")
+			else: 
+				animated_sprite.play("jump")
 		
 	
 	if direction:
