@@ -3,6 +3,8 @@ extends Node2D
 @onready var play_button = $Play_Button
 
 func _on_texture_button_pressed() -> void:
+	GlobalVariables.player_hp = 100
+	GlobalVariables.score = 0
 	get_tree().change_scene_to_file("res://scenes/game.tscn")
 
 func _on_texture_button_mouse_entered() -> void:

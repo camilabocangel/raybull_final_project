@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var player = $Player
 @onready var killer_zone = $Killzone
+@onready var score = $%GameManager.score
 
 func _process(delta: float) -> void:
 	killer_zone.player_fell.connect(_on_player_fell)
@@ -12,4 +13,5 @@ func _on_player_fell():
 	GlobalVariables.player_hp = player.hp
 	
 func _on_game_over():
+	GlobalVariables.score = score
 	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
