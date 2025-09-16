@@ -112,6 +112,7 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 
 func _process(delta: float) -> void:
 	if hp <= 0:
+		GlobalVariables.player_alive = false
 		death.emit()
 	
 func reduce_hp(damage: int):
