@@ -45,7 +45,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Life" type="Node2D"]
+[node name="Heart" type="Node2D"]
 
 [node name="Hearts" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_u10h0")
