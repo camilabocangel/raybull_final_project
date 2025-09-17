@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://bih3swuvb041h"]
+[gd_scene load_steps=44 format=3 uid="uid://bih3swuvb041h"]
 
 [ext_resource type="Texture2D" uid="uid://enoot518fi0x" path="res://assets/1 Pink_Monster/Pink_Monster_Walk_6.png" id="1_tp6od"]
 [ext_resource type="Script" uid="uid://dk54diw2hjisw" path="res://scripts/pinky_pie.gd" id="1_yjuhi"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b4nf25sbief06" path="res://assets/1 Pink_Monster/Pink_Monster_Run_6.png" id="5_g5kgq"]
 [ext_resource type="AudioStream" uid="uid://dipbncbwdwf50" path="res://assets/sounds/3pops/pop1.ogg" id="8_ljjl1"]
 [ext_resource type="PackedScene" uid="uid://b83buy4rek060" path="res://scenes/hurt_box.tscn" id="8_wfw7i"]
+[ext_resource type="AudioStream" uid="uid://tcvphm0mircr" path="res://assets/sounds/angry_monstruito.mp3" id="9_ljjl1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k0vat"]
 atlas = ExtResource("2_ya2qf")
@@ -282,6 +283,7 @@ visible = false
 target_position = Vector2(-12, 0)
 
 [node name="DetectionArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 4
 collision_mask = 2
 
@@ -292,6 +294,7 @@ shape = SubResource("CapsuleShape2D_wfw7i")
 debug_color = Color(0.682096, 0.811683, 0.791484, 0.42)
 
 [node name="HurtBox" parent="." instance=ExtResource("8_wfw7i")]
+visible = false
 position = Vector2(0, 2)
 collision_layer = 64
 collision_mask = 8
@@ -301,6 +304,7 @@ position = Vector2(-1, -1)
 scale = Vector2(1, 1.6)
 
 [node name="Marker2D" type="Marker2D" parent="."]
+visible = false
 
 [node name="HitBox" type="Area2D" parent="Marker2D"]
 collision_layer = 32
@@ -317,8 +321,13 @@ shape = SubResource("CircleShape2D_ya2qf")
 debug_color = Color(0, 0.647059, 0.215686, 0.419608)
 
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+visible = false
 stream = ExtResource("8_ljjl1")
-volume_db = 5.115
+volume_db = 20.0
+
+[node name="GrowlSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_ljjl1")
+volume_db = 20.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
