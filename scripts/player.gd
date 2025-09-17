@@ -134,7 +134,7 @@ func reduce_hp(damage: int):
 
 
 func _on_hurt_box_area_entered(area: Area2D) -> void:
-	reduce_hp(5)
+	reduce_hp(1)
 	print("OUCHHHHHHHH (player)")
 	if hp <= 0 and animated_sprite.animation != "death":
 		animated_sprite.play("death")

@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 const SPEED = 20
-const MAX_SPEED = 80
-const ACCEL = 100
+const MAX_SPEED = 50
+const ACCEL = 20
 @export var hp = 50
 var direction = 1
 @export var target = Vector2.ZERO
