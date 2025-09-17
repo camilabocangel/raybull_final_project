@@ -20,7 +20,6 @@ var player_detected = false
 
 func _ready() -> void:
 	target = global_position
-	animated_sprite.animation_finished.connect(_on_animation_finished)
 
 func _physics_process(delta: float) -> void:
 	if not animated_sprite:
@@ -59,14 +58,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * SPEED
 	
 	move_and_slide()
-
-func _on_animation_finished():
-	if animated_sprite.animation == "attack":
-		collision_shape_right.disabled = true
-		collision_shape_left.disabled = true
-	if animated_sprite.animation == "death":
-		queue_free()
-
+	
 func _on_hurt_box_area_entered(area: Area2D) -> void:
 	hp -= 10
 	print("OUCHHHHHHHH (enemigo)")
@@ -82,3 +74,7 @@ func _on_detection_area_area_exited(area: Area2D) -> void:
 	player_detected = false 
 	target = global_position
 	animated_sprite.play("walk")
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	pass # Replace with function body.
