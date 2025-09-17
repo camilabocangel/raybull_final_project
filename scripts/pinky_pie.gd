@@ -18,9 +18,11 @@ signal deathSignal
 @onready var collision_shape_left: CollisionShape2D = $Marker2D/HitBox/CollisionShapeLeft
 @onready var death_sound: AudioStreamPlayer2D = $DeathSound
 @onready var growl_sound: AudioStreamPlayer2D = $GrowlSound
-
-
+@onready var huh_sound: AudioStreamPlayer2D = $HuhSound
+@onready var huh_timer: Timer = $HuhTimer
 @onready var detection_area: Area2D = $DetectionArea 
+
+
 
 func _ready() -> void:
 	target = global_position
@@ -80,7 +82,7 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 		deathSignal.emit()
 
 func _on_detection_area_area_entered(area: Area2D) -> void:
-	growl_sound.play()
+	huh_sound.play()
 	player_detected = true 
 	animated_sprite.play("run")
 

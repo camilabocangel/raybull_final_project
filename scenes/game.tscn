@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://q26tgcmm2clv"]
+[gd_scene load_steps=29 format=3 uid="uid://q26tgcmm2clv"]
 
 [ext_resource type="Texture2D" uid="uid://cttavphymk7ct" path="res://assets/tiles/Mountain_Falls_Files/Mountain_Falls_main_layer_LUSH.png" id="1_dinhu"]
 [ext_resource type="Script" uid="uid://nd2q1i2o0s15" path="res://scripts/game.gd" id="1_ir15t"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://coyi5e3kbvrbc" path="res://scenes/player.tscn" id="9_1kice"]
 [ext_resource type="PackedScene" uid="uid://pb1m2jul5ssu" path="res://scenes/killzone.tscn" id="10_5newe"]
 [ext_resource type="PackedScene" uid="uid://ryk4viggblgg" path="res://scenes/coin.tscn" id="11_37s47"]
+[ext_resource type="PackedScene" uid="uid://dxefjkewcvavr" path="res://scenes/heart.tscn" id="13_ca42v"]
 [ext_resource type="PackedScene" uid="uid://bih3swuvb041h" path="res://scenes/pinky_pie.tscn" id="14_1kice"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_trtic"]
@@ -626,14 +627,17 @@ limit_smoothed = true
 position_smoothing_enabled = true
 
 [node name="ScoreLabel" type="Label" parent="Player"]
-offset_left = -8.0
-offset_top = -105.0
-offset_right = 151.0
-offset_bottom = -86.0
+offset_left = -25.0
+offset_top = -124.0
+offset_right = 134.0
+offset_bottom = -105.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_trtic")
-text = "Score: x"
+text = "Score: 0"
 autowrap_mode = 2
+
+[node name="Life" parent="Player" instance=ExtResource("13_ca42v")]
+position = Vector2(-13, -93)
 
 [node name="Killzone" parent="." instance=ExtResource("10_5newe")]
 position = Vector2(-105, 181)

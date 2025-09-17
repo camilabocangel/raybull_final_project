@@ -106,9 +106,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		collision_shape_left.disabled = true
 		is_attacking = false
 
-func _on_hurt_box_area_entered(area: Area2D) -> void:
-	hp -= 10
-	print("OUCH (Player)")
+
 
 func _process(delta: float) -> void:
 	if hp <= 0:
@@ -118,3 +116,11 @@ func _process(delta: float) -> void:
 func reduce_hp(damage: int):
 	hp -= damage
 	print("PLayer HP: " + str(hp))
+
+
+func _on_hurt_box_area_entered(area: Area2D) -> void:
+	reduce_hp(5)
+	print("OUCHHHHHHHH (player)")
+	if hp <= 0 and animated_sprite.animation != "death":
+		animated_sprite.play("death")
+		
