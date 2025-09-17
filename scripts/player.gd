@@ -15,6 +15,8 @@ var jumps = 2
 @onready var slide_timer: Timer = $SlideTimer
 @onready var collision_shape_right: CollisionShape2D = $Marker2D/HitBox/CollisionShapeRight
 @onready var collision_shape_left: CollisionShape2D = $Marker2D/HitBox/CollisionShapeLeft
+@onready var heart_animation: AnimatedSprite2D = $Heart/Hearts
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -112,10 +114,23 @@ func _process(delta: float) -> void:
 	if hp <= 0:
 		GlobalVariables.player_alive = false
 		death.emit()
+		
+func update_hearts():
+	if hp > 80:
+		heart_animation.frame = 0
+	elif hp > 60:
+		heart_animation.frame = 1
+	elif hp > 40:
+		heart_animation.frame = 2
+	elif hp > 20:
+		heart_animation.frame = 3
+	else:
+		heart_animation.frame = 4
 	
 func reduce_hp(damage: int):
 	hp -= damage
 	print("PLayer HP: " + str(hp))
+	update_hearts()
 
 
 func _on_hurt_box_area_entered(area: Area2D) -> void:

@@ -636,7 +636,7 @@ theme_override_fonts/font = ExtResource("2_trtic")
 text = "Score: 0"
 autowrap_mode = 2
 
-[node name="Life" parent="Player" instance=ExtResource("13_ca42v")]
+[node name="Heart" parent="Player" instance=ExtResource("13_ca42v")]
 position = Vector2(-13, -93)
 
 [node name="Killzone" parent="." instance=ExtResource("10_5newe")]
