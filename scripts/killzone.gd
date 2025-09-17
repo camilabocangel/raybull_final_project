@@ -9,4 +9,5 @@ func _on_body_entered(body: Node2D) -> void:
 
 func _on_timer_timeout() -> void:
 	player_fell.emit()
-	get_tree().reload_current_scene()
+	if GlobalVariables.player_alive:
+		get_tree().reload_current_scene()

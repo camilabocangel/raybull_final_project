@@ -8,6 +8,8 @@ var direction = 1
 @export var target = Vector2.ZERO
 var player_detected = false
 
+signal deathSignal
+
 @onready var ray_cast_right: RayCast2D = $RayCastRight
 @onready var ray_cast_left: RayCast2D = $RayCastLeft
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -15,8 +17,12 @@ var player_detected = false
 @onready var collision_shape_right: CollisionShape2D = $Marker2D/HitBox/CollisionShapeRight
 @onready var collision_shape_left: CollisionShape2D = $Marker2D/HitBox/CollisionShapeLeft
 @onready var death_sound: AudioStreamPlayer2D = $DeathSound
-
+@onready var growl_sound: AudioStreamPlayer2D = $GrowlSound
+@onready var huh_sound: AudioStreamPlayer2D = $HuhSound
+@onready var huh_timer: Timer = $HuhTimer
 @onready var detection_area: Area2D = $DetectionArea 
+
+
 
 func _ready() -> void:
 	target = global_position
@@ -65,8 +71,10 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 	if hp <= 0 and animated_sprite.animation != "death":
 		animated_sprite.play("death")
 		death_sound.play()
+		deathSignal.emit()
 
 func _on_detection_area_area_entered(area: Area2D) -> void:
+	huh_sound.play()
 	player_detected = true 
 	animated_sprite.play("run")
 

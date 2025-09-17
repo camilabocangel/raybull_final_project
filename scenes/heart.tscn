@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://dxefjkewcvavr"]
+
+[ext_resource type="Texture2D" uid="uid://q04n8037nyxh" path="res://assets/Hearts/PNG/animated/border/heart_animated_2.png" id="1_v30as"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycbwg"]
+atlas = ExtResource("1_v30as")
+region = Rect2(0, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krgnv"]
+atlas = ExtResource("1_v30as")
+region = Rect2(17, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txm48"]
+atlas = ExtResource("1_v30as")
+region = Rect2(34, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nnyc"]
+atlas = ExtResource("1_v30as")
+region = Rect2(51, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mtg8"]
+atlas = ExtResource("1_v30as")
+region = Rect2(68, 0, 17, 17)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u10h0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycbwg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krgnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txm48")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8nnyc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4mtg8")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Life" type="Node2D"]
+
+[node name="Hearts" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_u10h0")
